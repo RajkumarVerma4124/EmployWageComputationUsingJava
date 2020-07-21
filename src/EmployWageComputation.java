@@ -4,7 +4,6 @@ public class EmployWageComputation
 	public static void main(String[] args) {
 		System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
 		System.out.println();
-		System.out.println("Calculate Daily Employee Wage(UC2)");
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter The Total Daily Hour : ");
 		int dailyHours = sc.nextInt();
@@ -13,25 +12,26 @@ public class EmployWageComputation
 		//constant
 		final int fullTime=1;
 		final int partTime=2;
+		//variable
+		int dailyEmpHours = 0;
 		//computation
+		System.out.println("Solving using Switch Case Statement (UC4)");
 		int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-		if ( empCheck == fullTime ) {
-			System.out.println("Employee is Present For Full Day");
-			int fullDayWage = wagePerHours * dailyHours;	
-			System.out.println("Employee daily wage is :"+fullDayWage);
-		}
-		else if ( empCheck == partTime ) {
-			System.out.println("Employee is Present For Half Day");
-			int partTimeHours=wagePerHours / 2;
-			int partTimeWage = partTimeHours * dailyHours;	
-			System.out.println("Employee part time wage is :"+partTimeWage);
-		}
-		else {
-			System.out.println("Employee is Absent For The day");
-			dailyHours = 0;
+		switch (empCheck) {
+			case fullTime:
+				dailyEmpHours = dailyHours;
+				System.out.println("Employ Wage For Full Time is :"+(dailyEmpHours*wagePerHours));
+				break;
+			case partTime:
+				dailyEmpHours = dailyHours / 2;
+				System.out.println("Employ Wage For Part Time is :"+(dailyEmpHours*wagePerHours));
+				break;
+			default:
+				dailyEmpHours = 0;
+				System.out.println("Employ Is Absent For Today with wage :" +dailyEmpHours);
+				break;
 		}
 		sc.close();
-		
 	}
 
 }
