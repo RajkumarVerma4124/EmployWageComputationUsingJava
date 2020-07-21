@@ -20,6 +20,14 @@ class EmpWageComputaion {
         this.totalHours = totalHours;
     }
     
+    public String getCompany() {
+		return this.company;
+	}
+    
+    public String getName() {
+		return this.name;
+	}
+    
     public int employMonthlyWage() {
         // variable
         int dailyWage, totalWage = 0, dailyEmpHours = 0, hours = 0, day = 0;
@@ -46,7 +54,6 @@ class EmpWageComputaion {
         }
         return totalWage;
     }
-    
 }
 
 public class EmployWageComputation {
@@ -76,7 +83,7 @@ public class EmployWageComputation {
 		    int totalHours = sc.nextInt();
 		   
 		    companyWageofEmp[i] = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
-		    System.out.println("Employ Name : " +companyWageofEmp[i].name+ "  :: Company name : "+companyWageofEmp[i].company+"  :: Total Wage : "+companyWageofEmp[i].employMonthlyWage());
+		    System.out.println("Employ Name : " +companyWageofEmp[i].getName()+ "  :: Company name : "+companyWageofEmp[i].getCompany()+"  :: Total Wage : "+companyWageofEmp[i].employMonthlyWage());
 	        System.out.println();			
 	    }
     sc.close();
