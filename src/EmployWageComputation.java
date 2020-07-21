@@ -1,15 +1,37 @@
 import java.util.*;
 
+class EmployWage {
+	 public int dailyWage;
+	 public int totalWage;
+	 public int day;
+
+	 public EmployWage(int day,int dailyWage, int totalWage) {
+		 this.day=day;
+		 this.dailyWage=dailyWage;
+		 this.totalWage=totalWage;
+	
+	 }
+	 
+	 public void showEmployWages(){
+		   System.out.print("Day : "+day+" Daily Wage : "+dailyWage+" Employ Wage : "+totalWage);
+		   System.out.println();
+		 }
+}
+
+
+
 class EmpWageComputaion {
 	public static final int fullTime = 1;
     public static final int partTime = 2;
-    	
+    
 	public final String company;
     public final String name;
-    public final int wagePerHours;
-    public final int dailyHours;
+    public int wagePerHours;
+    public int dailyHours;
     public final int dayPerMonth;
     public final int totalHours;
+   
+   
 
     public EmpWageComputaion(String company, String name, int wagePerHours, int dailyHours, int dayPerMonth, int totalHours) {
         this.company = company;
@@ -20,6 +42,8 @@ class EmpWageComputaion {
         this.totalHours = totalHours;
     }
     
+    
+    
     public String getCompany() {
 		return this.company;
 	}
@@ -28,11 +52,16 @@ class EmpWageComputaion {
 		return this.name;
 	}
     
+    
     public int employMonthlyWage() {
-        // variable
+    	// variable
         int dailyWage, totalWage = 0, dailyEmpHours = 0, hours = 0, day = 0;
-
         // computation
+    	EmployWage[] Wages = new EmployWage[dayPerMonth+1];
+    	
+    	ArrayList<Integer> dailyEmployWage=new ArrayList<Integer>();  
+    	ArrayList<Integer> totalEmployWage=new ArrayList<Integer>();  
+    	
         while (hours < totalHours && day < dayPerMonth) {
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
@@ -49,16 +78,23 @@ class EmpWageComputaion {
             hours += dailyEmpHours;
             day++;
             dailyWage = dailyEmpHours * wagePerHours;
+            dailyEmployWage.add(dailyWage);
             totalWage += dailyWage;
-            System.out.println("Day : " + day + "  Hours : " + hours + "  DailyWage : " + dailyWage + "  TotalWage : "+ totalWage);
+            totalEmployWage.add(totalWage);
+            Wages[day] = new EmployWage(day, dailyWage, totalWage);
+            Wages[day].showEmployWages();
+            //System.out.println("Day : " + day + "  Hours : " + hours + "  DailyWage : " + dailyWage + "  TotalWage : "+ totalWage);
         }
+        System.out.println("Daily Wage : "+dailyEmployWage);
+        System.out.println("Total Wage : "+totalEmployWage);
         return totalWage;
+       
     }
 }
 
 public class EmployWageComputation {
 
-    public static <E> void main(String[] args) {
+    public static void main(String[] args) {
     	
     	System.out.print("Calculating The Monthly Employ wage for multiple companies");
         System.out.println();
@@ -119,6 +155,7 @@ public class EmployWageComputation {
         
         for(EmpWageComputaion companyList:list){
         	System.out.println(companyList.company+" : "+companyList.employMonthlyWage());
+	        System.out.println();
         }
 	    
 	    System.out.print("Company Name List  :"+nameOfcompany);
