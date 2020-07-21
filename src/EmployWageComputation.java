@@ -58,38 +58,83 @@ class EmpWageComputaion {
 
 public class EmployWageComputation {
 
-    public static void main(String[] args) {
+    public static <E> void main(String[] args) {
     	
     	System.out.print("Calculating The Monthly Employ wage for multiple companies");
         System.out.println();
     	Scanner sc = new Scanner(System.in);
         System.out.print("Enter The No. Of Records You Want To Enter : ");
         int records = sc.nextInt();
-    	 
-        EmpWageComputaion companyWageofEmp[] = new EmpWageComputaion[records];
-     
-	    for(int i=0; i<records; i++) {
-		    System.out.print("Enter The Name Of The Company : ");
-		    String company = sc.next();
-		    System.out.print("Enter The Name Of The  Employ : ");
-		    String name = sc.next();
-		    System.out.print("Enter The Total Daily Hour : ");
-		    int dailyHours = sc.nextInt();
-		    System.out.print("Enter The Wage Per Hour : ");
-		    int wagePerHours = sc.nextInt();
-		    System.out.print("Enter The Days in a Month : ");
-		    int dayPerMonth = sc.nextInt();
-		    System.out.print("Enter The Total Hours Of That Month You Are Gonna Work : ");
-		    int totalHours = sc.nextInt();
-		   
-		    companyWageofEmp[i] = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
-		    System.out.println("Employ Name : " +companyWageofEmp[i].getName()+ "  :: Company name : "+companyWageofEmp[i].getCompany()+"  :: Total Wage : "+companyWageofEmp[i].employMonthlyWage());
-	        System.out.println();			
-	    }
-    sc.close();
+        List<EmpWageComputaion> list=new ArrayList<EmpWageComputaion>();
+        ArrayList<Integer> companyofEmp = new ArrayList<Integer>();  
+        ArrayList<String> nameOfcompany = new ArrayList<String>(); 
+        if( records <=4 ) {
+		    for(int i=1; i<=records; i++) {
+			    System.out.print("Enter The Name Of The Company : ");
+			    String company = sc.next();
+			    System.out.print("Enter The Name Of The  Employ : ");
+			    String name = sc.next();
+			    System.out.print("Enter The Total Daily Hour : ");
+			    int dailyHours = sc.nextInt();
+			    System.out.print("Enter The Wage Per Hour : ");
+			    int wagePerHours = sc.nextInt();
+			    System.out.print("Enter The Days in a Month : ");
+			    int dayPerMonth = sc.nextInt();
+			    System.out.print("Enter The Total Hours Of That Month You Are Gonna Work : ");
+			    int totalHours = sc.nextInt();
+			   
+			    if(i == 1) {
+			    	EmpWageComputaion companyOne = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
+			    	companyofEmp.add(companyOne.employMonthlyWage());
+			    	nameOfcompany.add(companyOne.company);
+				    list.add(companyOne);
+			        System.out.println();
+			    }
+			    if(i == 2) {
+			    	EmpWageComputaion companyTwo = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
+			    	companyofEmp.add(companyTwo.employMonthlyWage());
+			    	nameOfcompany.add(companyTwo.company);
+				    list.add(companyTwo);
+			        System.out.println();
+			    }
+			    if(i == 3) {
+			    	EmpWageComputaion companyThree = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
+			    	companyofEmp.add(companyThree.employMonthlyWage());
+			    	nameOfcompany.add(companyThree.company);
+				    list.add(companyThree);
+			        System.out.println();
+			    }
+			    if(i == 4) {
+			    	EmpWageComputaion companyFour = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
+			    	companyofEmp.add(companyFour.employMonthlyWage());
+			    	nameOfcompany.add(companyFour.company);
+				    list.add(companyFour);
+			        System.out.println();
+			    }
+		    }
+        }
+        else {
+		    System.out.print("Entries Should be Less than or equal to 4 ");
+        }
+        
+        for(EmpWageComputaion companyList:list){
+        	System.out.println(companyList.company+" : "+companyList.employMonthlyWage());
+        }
+	    
+	    System.out.print("Company Name List  :"+nameOfcompany);
+        System.out.println();
+	    System.out.print("Employee Wage List :"+companyofEmp);
+	    sc.close();
     }
+        
 }
-
+		   
+		    
+		    
+		    
+		   
+	       
+  
 
 
 
