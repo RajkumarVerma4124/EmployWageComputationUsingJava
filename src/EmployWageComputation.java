@@ -30,9 +30,9 @@ class EmpWageComputaion {
     public int dailyHours;
     public final int dayPerMonth;
     public final int totalHours;
-   
-   
-
+    
+    Map<String, Integer> companyWage = new HashMap<>();
+    
     public EmpWageComputaion(String company, String name, int wagePerHours, int dailyHours, int dayPerMonth, int totalHours) {
         this.company = company;
         this.name = name;
@@ -50,6 +50,14 @@ class EmpWageComputaion {
     
     public String getName() {
 		return this.name;
+	}
+    
+    public void addTotalWage() {
+    	companyWage.put(company, employMonthlyWage());
+	}
+
+	public void getTotalEmpWage(String company) {
+        System.out.println("Company Name : "+company+" Total Wage : "+companyWage.get(company));
 	}
     
     
@@ -120,21 +128,33 @@ public class EmployWageComputation {
 			    if(i == 1) {
 			    	EmpWageComputaion companyOne = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
 			    	companyWage.put(company, companyOne.employMonthlyWage());
-			        System.out.println();
+			    	System.out.println();
+			    	companyOne.addTotalWage();
+			    	companyOne.getTotalEmpWage(company);
+			    	System.out.println();
 			    }
 			    if(i == 2) {
 			    	EmpWageComputaion companyTwo = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
 			    	companyWage.put(company, companyTwo.employMonthlyWage());
+			    	System.out.println();
+			    	companyTwo.addTotalWage();
+			    	companyTwo.getTotalEmpWage(company);
 			        System.out.println();
 			    }
 			    if(i == 3) {
 			    	EmpWageComputaion companyThree = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
 			    	companyWage.put(company, companyThree.employMonthlyWage());
+			    	System.out.println();
+			    	companyThree.addTotalWage();
+			    	companyThree.getTotalEmpWage(company);
 			        System.out.println();
 			    }
 			    if(i == 4) {
 			    	EmpWageComputaion companyFour = new EmpWageComputaion(company, name, wagePerHours, dailyHours, dayPerMonth, totalHours);
 			    	companyWage.put(company, companyFour.employMonthlyWage());
+			    	System.out.println();
+			    	companyFour.addTotalWage();
+			    	companyFour.getTotalEmpWage(company);
 			        System.out.println();
 			    }
 		    }
@@ -144,7 +164,6 @@ public class EmployWageComputation {
         }
         
         while (true) {
-	        System.out.println("Company Wage Stored in array : " +companyWage);
 	        System.out.println("Enter The Company Name To get The Total Wage and press e to Exit ");
 	        String companyName = sc.next();
 	        String exit = "e";
@@ -152,35 +171,9 @@ public class EmployWageComputation {
 	        	System.exit(1);
 	        }
 	        else {
-	        System.out.println("Company Name : "+companyName+" Total Wage : "+companyWage.get(companyName));
+	            System.out.println("Company Name : "+companyName+" Total Wage : "+companyWage.get(companyName));
+
 	        }  
         }
     }
 }
-		   
-		    
-		    
-		    
-		   
-	       
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
